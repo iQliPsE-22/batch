@@ -2,32 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "clashDisplay";
+  src: url("../public/fonts/ClashDisplay-Medium.ttf") format("truetype");
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "clashDisplay", sans-serif;
+}
+.halftone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #ff0000, #000000);
+  z-index: -1;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.halftone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g fill-opacity="0.2"><circle cx="1" cy="1" r="1"/><circle cx="5" cy="5" r="1"/><circle cx="9" cy="9" r="1"/><circle cx="13" cy="13" r="1"/><circle cx="17" cy="17" r="1"/></g></svg>')
+    repeat;
+  opacity: 0.2; /* Adjust opacity to control graininess */
+}
+.clash {
+  font-family: "clashDisplay";
+}
+.clash nav {
+  background-color: #000000;
+  color: red;
+  transition: 0.5s;
+}
+code .overlap-container {
+  position: relative;
+  width: fit-content; /* Width of the container based on image width */
+}
+
+.overlap-container img {
+  position: absolute;
+  width: 35%;
+  height: auto;
+}
+
+.first-image {
+  z-index: 2;
+  top: 10%;
+}
+.third-image {
+  z-index: 0;
+  top: 20%;
+  left: 70%; /* Adjust this value to control the overlap */
+}
+.second-image {
+  z-index: 1;
+  top: 15%;
+  left: 60%; /* Adjust this value to control the overlap */
+}
+.gradient {
+  background-image: linear-gradient(to bottom, #ff5555, #fde598);
 }
