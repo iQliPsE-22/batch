@@ -31,7 +31,6 @@ const Hero = () => {
             </Button>
 
             <button
-              href="#watch-video"
               className="px-4 py-2 flex items-center gap-2 bg-transparent border border-white rounded hover:bg-white hover:text-gray-700"
             >
               <span>
